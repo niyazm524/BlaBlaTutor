@@ -2,15 +2,18 @@
   <app-header>
     <v-layout align-center justify-center column>
       <v-flex xs12 sm4 md3>
-        <div>
           <v-layout column justify-center>
-            <logo></logo>
-            <span class="text-xs-center">
-            <span>Краткое описание проекта</span>
-          </span>
-          </v-layout>
+            <v-flex>
+              <logo></logo>
+            </v-flex>
 
-        </div>
+            <v-flex class="description">
+              <v-flex class="text-xs-center">
+                <span>Краткое описание проекта</span>
+              </v-flex>
+            </v-flex>
+
+          </v-layout>
         <div class="btns">
           <v-layout column justify-center>
             <v-btn color="#63d3f8" dark round to="/login">Войти</v-btn>
@@ -50,8 +53,13 @@
     border-radius: 5px;
     box-sizing: border-box;
   }
+
   .btns {
-    padding-bottom: 30px;
-    padding-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+  }
+
+  .description {
+    margin-top: 50px;
   }
 </style>
