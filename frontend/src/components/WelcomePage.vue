@@ -12,6 +12,11 @@
 
         </div>
       </v-flex>
+      <h1>Интерес к любимому делу</h1>
+      <img src="../assets/veryInteresting.jpg">
+      <h1>Трудоспособность</h1>
+      <img src="../assets/working.jpg">
+      <h1>Эстетика</h1>
       <img src="../assets/perfect.jpg">
       <v-flex xs12 sm4 md3>
         <div>
@@ -37,5 +42,10 @@
 </script>
 
 <style scoped>
-
+  img {
+    max-width: 100%;
+    width: 686px;
+    border: 4px solid #63d3f8;
+    border-radius: 5px;
+  }
 </style>
