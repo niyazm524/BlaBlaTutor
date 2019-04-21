@@ -4,12 +4,12 @@
 
         <v-layout row>
 
-          <v-flex sm6 md5 lg6 class="hidden-xs-only">
+          <v-flex sm6 md5 lg6 class="hidden-xs-only" >
             <v-container justify-center>
 
             <v-layout column wrap>
               <v-layout justify-center>
-                <img src="../assets/logo.png">
+                  <img  src="../assets/logo.png">
               </v-layout>
             <v-flex class="text-xs-center">
               <h4 >Vuetify имеет 12-точечную систему сеток. Построенная с использованием flex-box , сетка используется для
@@ -43,7 +43,7 @@
                       <v-select v-model="univer" :rules="univerRule" :items="univers" label="Университет"
                                 required></v-select>
                     </v-flex>
-                    <v-flex xs12 sm5 md5 lg5 offset-lg2 offset-md2 offset-sm2 >
+                    <v-flex xs12 sm5 md5 lg5 offset-lg2 offset-md2 offset-sm2>
                       <v-select v-model="course" :rules="courseRule" :items="courses" label="Курс" required></v-select>
 
                     </v-flex>
@@ -116,8 +116,9 @@
       methods: {
         passMatchError () {
           return (this.pass === this.confirmedpass) ? '' : ' '
-        }
-      }
+        },
+
+      },
   }
 </script>
 

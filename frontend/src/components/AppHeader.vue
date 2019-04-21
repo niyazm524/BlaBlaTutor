@@ -11,7 +11,7 @@
 
     >
       <v-list dense>
-        <v-list-tile @click="">
+        <v-list-tile @click="" to="/profile">
           <v-list-tile-action>
             <v-icon>perm_identity</v-icon>
           </v-list-tile-action>
