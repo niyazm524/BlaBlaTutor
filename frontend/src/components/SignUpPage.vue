@@ -1,6 +1,6 @@
 <template>
   <app-header>
-    <v-container fluid fill-height>
+    <v-container fill-height>
 
         <v-layout row>
 
@@ -31,10 +31,10 @@
                 <v-form fluid>
                   <v-layout wrap>
                     <v-flex xs12 sm5 md5 lg5  >
-                      <v-text-field v-model="firstname" :rules="nameRule" label="Имя" required></v-text-field>
+                      <v-text-field v-model="firstName" :rules="nameRule" label="Имя" required></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm5 md5 lg5 offset-lg2 offset-md2 offset-sm2  >
-                      <v-text-field v-model="lastname" :rules="nameRule" label="Фамилия" required></v-text-field>
+                      <v-text-field v-model="lastName" :rules="nameRule" label="Фамилия" required></v-text-field>
                     </v-flex>
                   </v-layout>
                   <v-text-field v-model="mail" :rules="mailRules" label="Эл. почта" required></v-text-field>
@@ -50,7 +50,7 @@
 
                   </v-layout>
                   <v-text-field id="password" v-model="pass" :rules="passRule" label="Пароль" type="password" required></v-text-field>
-                  <v-text-field id="confpass" v-model="confirmedpass" :rules="confirmedpassRule" label="Подтвердите пароль"
+                  <v-text-field id="confPass" v-model="confirmedPass" :rules="confirmedPassRule" label="Подтвердите пароль"
                                 type="password" :error-messages="passMatchError()" required></v-text-field>
                 </v-form>
               </v-card-text>
@@ -73,11 +73,11 @@
     components: {AppHeader},
     data: () => ({
       valid: false,
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       mail: '',
       pass: '',
-      confirmedpass:'',
+      confirmedPass:'',
       nameRule: [
         v => !!v || ''
       ],
@@ -97,7 +97,7 @@
         v => !!v || '',
         v => v.length > 5 || ''
       ],
-      confirmedpassRule: [
+      confirmedPassRule: [
         v => !!v || '',
       ],
       courseRule: [
@@ -115,7 +115,7 @@
     }),
       methods: {
         passMatchError () {
-          return (this.pass === this.confirmedpass) ? '' : ' '
+          return (this.pass === this.confirmedPass) ? '' : ' '
         },
 
       },
@@ -123,16 +123,6 @@
 </script>
 
 <style scoped>
-  .signup {
-    box-shadow: 5px 5px 10px 5px rgb(0, 0, 0.5);
-  }
-
-  .titlecard {
-    background-color: #63d3f8;
-    text-align: center;
-    color: white;
-  }
-
   .my_btn {
     border-radius: 40px;
   }
