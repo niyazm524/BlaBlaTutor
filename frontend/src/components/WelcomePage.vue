@@ -1,6 +1,6 @@
 <template>
   <app-header>
-    <v-layout align-center justify-center column>
+    <v-layout align-center justify-center column class="text-xs-center">
       <v-flex xs12 sm4 md3>
             <v-flex>
               <logo></logo>
@@ -24,9 +24,6 @@
       <img class="my_img" src="../assets/working.jpg">
       <h1>Эстетика</h1>
       <img class="my_img" src="../assets/perfect.jpg">
-      <v-flex xs12 sm4 md3>
-
-      </v-flex>
     </v-layout>
   </app-header>
 </template>
