@@ -50,11 +50,11 @@
 
                   </v-layout>
                   <v-text-field
-                    :append-icon="show ? 'visibility_off' : 'visibility'"
+                    :append-icon="showIcon ? 'visibility_off' : 'visibility'"
                     id="password" v-model="pass" :rules="[rules.required, rules.min]"
                     label="Пароль"
-                    :type="show ? 'text' : 'password'"
-                    @click:append="show = !show">
+                    :type="showIcon ? 'text' : 'password'"
+                    @click:append="showIcon = !showIcon">
                   </v-text-field>
                   <v-text-field id="confPass" v-model="confirmedPass" :rules="[rules.required]" label="Подтвердите пароль"
                                 type="password" :error-messages="passMatchError()" ></v-text-field>
@@ -78,8 +78,7 @@
     name: "SignUpPage",
     components: {AppHeader},
     data: () => ({
-      show: false,
-      valid: false,
+      showIcon: false,
       firstName: '',
       lastName: '',
       mail: '',
