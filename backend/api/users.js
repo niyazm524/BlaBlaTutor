@@ -14,7 +14,7 @@ router.post('/', function (req, res, next) {  // register new user
 
         })
         .catch((err) => {
-            res.status(500);
+            res.statusCode = 500;
             if(err.code === 11000) res.send({status: 'error', message: 'User with this username already exists'});
             res.send({err});
         })
