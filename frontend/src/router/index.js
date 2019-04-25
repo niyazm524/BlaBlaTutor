@@ -4,28 +4,81 @@ import WelcomePage from '@/components/WelcomePage'
 import LoginPage from "@/components/LoginPage";
 import SignUpPage from "@/components/SignUpPage";
 import Profile from "@/components/Profile";
+import MainPage from "@/components/MainPage";
+
 
 Vue.use(Router)
 
-export default new Router({
+
+const router = new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      component: WelcomePage
+      component: MainPage,
+      meta: {
+        requiresAuth: true,
+        redirect: 'WelcomePage'
+      }
     },
     {
+      name: 'WelcomePage',
+      path: '/',
+      component: WelcomePage,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      name: 'LoginPage',
       path: '/login',
-      component: LoginPage
+      component: LoginPage,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/signup',
       component: SignUpPage,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/profile',
       component: Profile,
+      meta: {
+        requiresAuth: true,
+        redirect: 'LoginPage'
+      }
     },
 
-  ]
-})
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  const authRequired = to.meta.requiresAuth;
+  const loggedIn = localStorage.getItem('auth_token');
+
+  console.log(to, authRequired, loggedIn);
+
+  if (authRequired && !loggedIn) {
+    console.log(authRequired, loggedIn);
+    if (to.meta.redirect)
+      return next({name: to.meta.redirect});
+    else {
+      return next({name: 'WelcomePage'});
+    }
+  }
+
+  next();
+});
+
+export default router;

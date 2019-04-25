@@ -11,7 +11,7 @@
 
     >
       <v-list dense>
-        <v-list-tile @click="" to="/profile">
+        <v-list-tile v-if="$store.state.loggedIn" @click="" to="/profile">
           <v-list-tile-action>
             <v-icon>perm_identity</v-icon>
           </v-list-tile-action>
@@ -38,7 +38,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click="">
+        <v-list-tile v-if="$store.state.loggedIn" @click="logout">
           <v-list-tile-action>
             <v-icon>exit_to_app</v-icon>
           </v-list-tile-action>
@@ -59,16 +59,14 @@
         <router-link style="text-decoration: none; color: white" to="/">BlaBlaTutor</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon flat>
+      <v-btn icon to="/">
         <v-icon>home</v-icon>
       </v-btn>
 
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
     <v-content>
-      <v-container fluid fill-height>
-        <slot></slot>
-      </v-container>
+      <slot></slot>
     </v-content>
   </div>
 </template>
@@ -78,7 +76,14 @@
         name: "AppHeader",
         data: () => ({
           drawer: false
-        })
+        }),
+        methods: {
+          logout() {
+            this.$store.dispatch('logout').then(() => {
+              this.$router.go(null)
+            })
+          }
+        }
     }
 </script>
 

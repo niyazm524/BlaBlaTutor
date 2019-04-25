@@ -28,7 +28,8 @@
                 </v-tooltip>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-alert type="error" transition="scale-transition" :value="isAlertShown">{{alertMessage}}</v-alert>
+                <v-form lazy-validation ref="form">
                   <v-layout wrap>
                     <v-flex xs12 sm5 md5 lg5  >
                       <v-text-field v-model="firstName" :rules="[rules.required]" label="Имя"></v-text-field>
@@ -37,6 +38,7 @@
                       <v-text-field v-model="lastName" :rules="[rules.required]" label="Фамилия" ></v-text-field>
                     </v-flex>
                   </v-layout>
+                  <v-text-field v-model="username" :rules="[rules.required, rules.usernameMatch]" label="Имя пользователя"></v-text-field>
                   <v-text-field v-model="mail" :rules="[rules.required, rules.emailMatch]" label="Эл. почта"></v-text-field>
                   <v-layout row wrap>
                     <v-flex xs12 sm5 md5 lg5>
@@ -62,7 +64,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn class="my_btn" dark color="#00b8f4">Ок</v-btn>
+                <v-btn class="my_btn" dark color="#00b8f4" :loading="isRequestInProcess" @click="register">Ок</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -79,8 +81,12 @@
     components: {AppHeader},
     data: () => ({
       showIcon: false,
+      isAlertShown: false,
+      alertMessage: '',
+      isRequestInProcess: false,
       firstName: '',
       lastName: '',
+      username: '',
       mail: '',
       pass: '',
       confirmedPass:'',
@@ -93,6 +99,7 @@
         required: v => !!v || 'Заполните поле',
         min: v => v.length > 5 || 'Введите пароль длиной не менеее 6 символов',
         emailMatch: v => /.+@.+/.test(v) || 'Введите действительную эл. почту',
+        usernameMatch: v => /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,16}$/igm.test(v) || 'Имя пользователя должно содержать только латинские буквы, цифры, _ и точку'
       },
       course: null,
       courses: [
@@ -102,13 +109,34 @@
         '4',
         '5',
         '6'
-      ]
+      ],
     }),
       methods: {
         passMatchError () {
           return (this.pass === this.confirmedPass) ? '' : 'Пароли не совпадают'
         },
-
+        register() {
+          if(!this.$refs.form.validate()) return;
+          this.isRequestInProcess = true;
+          this.isAlertShown = false;
+          this.$store.dispatch('register', {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            username: this.username,
+            mail: this.mail,
+            university: this.univer,
+            course: this.course,
+            password: this.pass
+          })
+            .then(() => {
+              setTimeout(() => this.$router.push('/'), 500);
+            })
+            .catch(err => {
+              this.alertMessage = err.response.data.message;
+              this.isAlertShown = true;
+            })
+            .finally(() => this.isRequestInProcess = false);
+        }
       },
   }
 </script>
