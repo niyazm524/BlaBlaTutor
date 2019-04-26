@@ -16,9 +16,7 @@ router.post('/', function (req, res, next) {  // login and get token
                 res.send(err);
             }
 
-            const token = user.generateJWT();
-
-            return res.json({user, token});
+            return res.json(user.toAuthJSON());
         });
     })(req, res, next);
 

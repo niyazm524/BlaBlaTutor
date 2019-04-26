@@ -1,30 +1,32 @@
 <template>
   <app-header>
-    <v-layout align-center justify-center column class="text-xs-center">
-      <v-flex xs12 sm4 md3>
-            <v-flex>
-              <logo></logo>
+    <v-container>
+      <v-layout align-center justify-center column class="text-xs-center">
+        <v-flex xs12 sm4 md3>
+          <v-flex>
+            <logo></logo>
+          </v-flex>
+          <v-flex class="description">
+            <v-flex class="text-xs-center">
+              <span>Краткое описание проекта</span>
             </v-flex>
-              <v-flex class="description">
-                <v-flex class="text-xs-center">
-                  <span>Краткое описание проекта</span>
-                </v-flex>
-              </v-flex>
-        <div class="btns">
-          <v-layout column justify-center>
-            <v-btn color="#63d3f8" dark round to="/login">Войти</v-btn>
-            <v-btn color="#63d3f8" dark round to="/signup">Зарегистрироваться</v-btn>
-          </v-layout>
+          </v-flex>
+          <div class="btns">
+            <v-layout column justify-center>
+              <v-btn color="#63d3f8" dark round to="/login">Войти</v-btn>
+              <v-btn color="#63d3f8" dark round to="/signup">Зарегистрироваться</v-btn>
+            </v-layout>
 
-        </div>
-      </v-flex>
-      <h1>Интерес к любимому делу</h1>
-      <img class="my_img" src="../assets/veryInteresting.jpg">
-      <h1>Трудоспособность</h1>
-      <img class="my_img" src="../assets/working.jpg">
-      <h1>Эстетика</h1>
-      <img class="my_img" src="../assets/perfect.jpg">
-    </v-layout>
+          </div>
+        </v-flex>
+        <h1>Интерес к любимому делу</h1>
+        <img class="my_img" src="../assets/veryInteresting.jpg">
+        <h1>Трудоспособность</h1>
+        <img class="my_img" src="../assets/working.jpg">
+        <h1>Эстетика</h1>
+        <img class="my_img" src="../assets/perfect.jpg">
+      </v-layout>
+    </v-container>
   </app-header>
 </template>
 
