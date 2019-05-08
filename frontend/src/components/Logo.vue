@@ -1,7 +1,5 @@
 <template>
-  <div class="text-xs-center" id="logo">
-    <p>Здесь будет лого</p>
-  </div>
+  <img id="logo" src="/static/logo.png" alt="logo">
 </template>
 
 <script>
@@ -13,10 +11,7 @@
 <style scoped>
   #logo {
     height: 250px;
-    width: 200px;
-    border: 3px solid black;
-    text-align: center;
-    line-height: 250px;
+    width: 250px;
     margin: 0 auto;
   }
 </style>

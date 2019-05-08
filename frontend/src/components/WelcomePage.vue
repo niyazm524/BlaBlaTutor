@@ -41,12 +41,13 @@
 </script>
 
 <style scoped>
-  img {
+  img.my_img {
     max-width: 100%;
     width: 686px;
     border: 4px solid #63d3f8;
     border-radius: 5px;
     box-sizing: border-box;
+    margin: 30px 0;
   }
 
   .btns {
@@ -54,10 +55,6 @@
   }
 
   .description {
-    margin: 30px 0;
-  }
-
-  .my_img {
     margin: 30px 0;
   }
 </style>

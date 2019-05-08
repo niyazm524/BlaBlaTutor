@@ -9,7 +9,7 @@
 
             <v-layout column wrap>
               <v-layout justify-center>
-                  <img  src="../assets/logo.png">
+                  <logo></logo>
               </v-layout>
             <v-flex class="text-xs-center">
               <h4 >Vuetify имеет 12-точечную систему сеток. Построенная с использованием flex-box , сетка используется для
@@ -75,10 +75,11 @@
 
 <script>
   import AppHeader from "@/components/AppHeader";
+  import Logo from "@/components/Logo";
 
   export default {
     name: "SignUpPage",
-    components: {AppHeader},
+    components: {Logo, AppHeader},
     data: () => ({
       showIcon: false,
       isAlertShown: false,
