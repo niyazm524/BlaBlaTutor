@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {ROLE} = require('./constants');
 
 const groupSchema = mongoose.Schema(
     {
@@ -9,7 +10,7 @@ const groupSchema = mongoose.Schema(
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Users'
             },
-            role: {type: String, required: true}
+            role: {type: Number, default: ROLE.STUDENT}
         }],
         title: {type: String, required: true},
         description: String,
