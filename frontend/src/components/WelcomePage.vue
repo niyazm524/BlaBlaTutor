@@ -15,7 +15,7 @@
             <v-layout column justify-center>
               <v-btn color="#63d3f8" dark round to="/login">Войти</v-btn>
               <v-btn color="#63d3f8" dark round to="/signup">Зарегистрироваться</v-btn>
-            </v-layout>
+              </v-layout>
 
           </div>
         </v-flex>
