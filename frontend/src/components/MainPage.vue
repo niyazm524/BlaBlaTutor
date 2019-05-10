@@ -4,6 +4,11 @@
       <h1 class="light-blue--text display-3">Актуальные занятия</h1>
       <group-brief-view v-for="(group, key) in groups" :key="key" v-bind="group"/>
     </v-container>
+    <template v-slot:toolbar>
+      <v-btn flat to="/classCreation">
+        Создать объявление
+      </v-btn>
+    </template>
   </app-header>
 </template>
 
