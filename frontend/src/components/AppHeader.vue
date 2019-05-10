@@ -20,6 +20,15 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-list-tile @click="" to="/classList">
+          <v-list-tile-action>
+            <v-icon>book</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Занятия</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon>help_outline</v-icon>
@@ -59,6 +68,9 @@
         <router-link style="text-decoration: none; color: white" to="/">BlaBlaTutor</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn flat to="/classCreation">
+        Создать объявление
+      </v-btn>
       <v-btn icon to="/">
         <v-icon>home</v-icon>
       </v-btn>
