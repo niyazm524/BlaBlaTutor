@@ -12,8 +12,7 @@
                   <logo></logo>
               </v-layout>
             <v-flex class="text-xs-center">
-              <h4 >Vuetify имеет 12-точечную систему сеток. Построенная с использованием flex-box , сетка используется для
-                компоновки содержимого приложения.</h4>
+              <span class="project-description" v-text="$projectDescription"></span>
             </v-flex>
           </v-layout>
             </v-container>

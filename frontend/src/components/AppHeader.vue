@@ -51,7 +51,7 @@
     </v-navigation-drawer>
     <v-toolbar color="#00b8f4" dark fixed app>
       <router-link style="text-decoration: none" to="/">
-        <img width="48" height="48" src="../assets/_logo.svg" alt="logo">
+        <img width="48" height="48" src="/static/favicon.svg" alt="logo">
       </router-link>
       <v-toolbar-title>
         <router-link style="text-decoration: none; color: white" to="/">BlaBlaTutor</router-link>
