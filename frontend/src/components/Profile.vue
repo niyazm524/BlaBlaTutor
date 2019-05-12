@@ -34,7 +34,7 @@
         user: {}
       }
     },
-    mounted() {
+    beforeMount() {
       this.$http.get('/api/users/self')
         .then(res => {
           this.user = res.data
