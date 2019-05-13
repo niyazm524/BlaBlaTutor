@@ -105,7 +105,7 @@
             </v-flex>
           </v-layout>
           <v-text-field
-            v-model="newClass.price"
+            v-model="newClass.payment"
             outline
             label="Цена">
           </v-text-field>
@@ -116,7 +116,8 @@
             </v-radio-group>
           </v-flex>
           <v-flex xs10 md3 offset-xs1 offset-md0>
-            <v-btn dark flat :loading="loading" :disabled="!fieldsCorrect" @click="create" class="main-btn">Создать</v-btn>
+            <v-btn dark flat :loading="loading" :disabled="!fieldsCorrect" @click="create" class="main-btn">Создать
+            </v-btn>
           </v-flex>
         </v-form>
       </v-flex>
@@ -136,7 +137,7 @@
           title: null,
           description: null,
           place: null,
-          price: null
+          payment: null
         },
         date: null,
         dateMenu: false,
@@ -153,12 +154,23 @@
     },
     methods: {
       create() {
-        if(!this.fieldsCorrect) return;
+        if (!this.fieldsCorrect) return;
         this.loading = true;
-        
-        let Class = Object.assign({time: this.time, date: this.date, role: this.role}, this.newClass);
-        console.log(Class)
+
+        let Class = Object.assign({date: this.toDate(this.date, this.time), role: this.role}, this.newClass);
+        this.$http.post('/api/groups', Class)
+          .then(res => {
+            if(!res.data._id) throw Error("class wasn't created");
+            setTimeout(() => this.$router.push('/'), 1000);
+          })
+          .catch(reason => console.error(reason.response.data.err.message || reason))
+          .finally(() => this.loading = false)
       },
+      toDate(dateStr, timeStr) {
+        const [year, month, day] = dateStr.split('-');
+        const [hour, minute] = timeStr.split(':');
+        return new Date(year, month - 1, day, hour, minute)
+      }
 
     }
   }
