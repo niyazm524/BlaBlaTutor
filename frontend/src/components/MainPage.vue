@@ -1,7 +1,7 @@
 <template>
   <app-header>
     <v-container>
-      <h1 class="light-blue--text display-3">Актуальные занятия</h1>
+      <h1 class="light-blue--text display-2">Актуальные занятия</h1>
       <group-brief-view v-for="(group, key) in groups" :key="key" v-bind="group"/>
     </v-container>
     <template v-slot:toolbar>
@@ -28,6 +28,7 @@
       this.$http.get('/api/groups')
         .then(res => {
           this.groups = res.data;
+          console.log(res.data)
         })
         .catch(err => {
           console.error(err);

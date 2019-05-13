@@ -56,12 +56,13 @@ const router = new Router({
       }
     },
     {
-      path: '/class',
+      path: '/class/:id',
       component: Class,
+      props: true
     },
     {
       path: '/classCreation',
-      component: ClassCreation,
+      component: ClassCreation
     },
     {
       path: '/classList',
