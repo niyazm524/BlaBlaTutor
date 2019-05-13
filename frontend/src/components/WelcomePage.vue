@@ -9,14 +9,11 @@
           <v-flex class="text-xs-center">
             <span class="project-description" v-text="$projectDescription"></span>
           </v-flex>
-          <v-flex>
-            <div class="btns">
-              <v-layout column justify-center>
-                <v-btn color="#63d3f8" dark round to="/login">Войти</v-btn>
-                <v-btn color="#63d3f8" dark round to="/signup">Зарегистрироваться</v-btn>
+          <div class="btns">
+            <v-layout column justify-center>
+              <v-btn color="#63d3f8" dark round to="/login">Войти</v-btn>
+              <v-btn color="#63d3f8" dark round to="/signup">Зарегистрироваться</v-btn>
               </v-layout>
-            </div>
-          </v-flex>
 
         </v-flex>
       </v-layout>

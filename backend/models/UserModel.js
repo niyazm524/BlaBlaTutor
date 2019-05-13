@@ -7,7 +7,12 @@ const {Schema} = mongoose;
 
 const UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    university: {type: String, required: true},
+    course: {type: Number, required: true},
+    mail: {type: String, required: true, unique: true}
 });
 
 function hash(password, callback) {
@@ -41,7 +46,15 @@ UserSchema.methods.toAuthJSON = function () {
 };
 
 UserSchema.methods.getSafeData = function () {
-    return {_id: this._id, username: this.username}
+    return {
+        _id: this._id,
+        username: this.username,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        university: this.university,
+        course: this.course,
+        mail: this.mail
+    }
 };
 
 UserSchema.pre('save', function (next) {

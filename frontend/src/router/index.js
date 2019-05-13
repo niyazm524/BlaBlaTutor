@@ -5,6 +5,9 @@ import LoginPage from "@/components/LoginPage";
 import SignUpPage from "@/components/SignUpPage";
 import Profile from "@/components/Profile";
 import MainPage from "@/components/MainPage";
+import Class from "@/components/Class";
+import ClassCreation from "@/components/ClassCreation";
+import ClassList from "@/components/ClassList";
 
 
 Vue.use(Router)
@@ -52,6 +55,19 @@ const router = new Router({
         redirect: 'LoginPage'
       }
     },
+    {
+      path: '/class/:id',
+      component: Class,
+      props: true
+    },
+    {
+      path: '/classCreation',
+      component: ClassCreation
+    },
+    {
+      path: '/classList',
+      component: ClassList,
+    }
 
   ],
   scrollBehavior (to, from, savedPosition) {

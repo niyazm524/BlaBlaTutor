@@ -5,9 +5,8 @@ const UserModel = require('../models/UserModel');
 
 /* GET users listing. */
 router.post('/', function (req, res, next) {  // register new user
-    UserModel.create({username: req.body.username, password: req.body.password})
+    UserModel.create(req.body)
         .then((user) => {
-            console.log(req.body);
             user.save().then(() => {
                 res.send(user.toAuthJSON());
             })
@@ -15,7 +14,7 @@ router.post('/', function (req, res, next) {  // register new user
         })
         .catch((err) => {
             res.statusCode = 500;
-            if(err.code === 11000) res.send({status: 'error', message: 'User with this username already exists'});
+            if (err.code === 11000) res.send({status: 'error', message: 'User with this username already exists'});
             res.send({err});
         })
 });
